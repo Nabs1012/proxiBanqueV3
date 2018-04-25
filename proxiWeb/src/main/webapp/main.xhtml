@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<h:outputStylesheet library="css" name="pf.css"/>
+
+
+<title>page d'entrée</title>
+</h:head>
+
+<body>
+
+	<!-- DECLARATION DU TEMPLATE DONT LA PAGE EST CLIENTE -->
+	<ui:composition template="/template/layout.xhtml">
+
+	<!-- Redefinition de la zone 'content' du layout  	-->
+	<ui:define name="header" >
+	<h:form >  
+    <p:growl id="messages"/>
+ <style type="text/css">
+	.ui-menubar	{  background: #000;}
+</style>
+    <p:menubar  >
+        <p:menuitem icon="ui-icon-document" style="background-color:black ;">
+           
+        </p:menuitem>
+ 
+        <p:menuitem value="Acceuil" icon="ui-icon-home" style="background-color:black ; color:white;">
+           
+        </p:menuitem>
+ 
+      
+ 
+    
+ 
+        <p:menuitem value="Quitter" url="#" icon="ui-icon-close" style="background-color:red ;  color:white; position: absolute; right: 6px;" />
+ 
+
+    </p:menubar>
+</h:form>
+	</ui:define>
+		<ui:define name="content">
+		 <h:form>
+            <p:fieldset legend="Authentification">
+                <p:panelGrid columns="2" layout="grid">
+                    <p:outputLabel value="Identifiant"/>
+                    <p:inputText value="#{conseillerBean.conseiller.login}" />
+                    <p:outputLabel value="mdp"/>
+                    <p:inputText value="#{conseillerBean.conseiller.mdp}" />
+                   
+                    <p:commandButton value="Valider" action="#{conseillerBean.authentification}"/>
+<!--                     <p:commandButton value="Annuler" type="reset"/> -->
+
+                
+                </p:panelGrid>
+            </p:fieldset>
+        </h:form>
+
+    
+ 
+		</ui:define>
+		
+		
+
+	</ui:composition>
+</body>
+</html>
+
+

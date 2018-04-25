@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<h:outputStylesheet library="css" name="pf.css"/>
+
+
+<title>Ecran du conseiller</title>
+</h:head>
+<h:body>
+
+	<!-- DECLARATION DU TEMPLATE DONT LA PAGE EST CLIENTE -->
+	<ui:composition template="/template/layout.xhtml">
+<!-- Redefinition de la zone 'content' du layout  	-->
+	<ui:define name="header" >
+	<h:form >  
+    <p:growl id="messages"/>
+ <style type="text/css">
+	.ui-menubar	{  background: #000;}
+</style>
+    <p:menubar  >
+        <p:menuitem icon="ui-icon-document" style="background-color:black ;">
+           
+        </p:menuitem>
+ 
+        <p:menuitem value="Acceuil" icon="ui-icon-home" style="background-color:black ; color:white;">
+           
+        </p:menuitem>
+ 
+      
+ 
+    
+ 
+        <p:menuitem value="Quitter" url="#" icon="ui-icon-close" style="background-color:red ;  color:white; position: absolute; right: 6px;" />
+ 
+
+    </p:menubar>
+</h:form>
+</ui:define>
+<ui:define name="content">
+      <f:view>
+            <h:form>
+                <h1><p:outputLabel value="Liste des Clients"></p:outputLabel></h1>
+                <p:dataTable value="#{clientBean.lesClients()}" var="item">
+                    <p:column filterBy="#{item.idClient}">
+                        <f:facet name="header">
+                            <h:outputText value="Identifiant"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idClient}"/>
+                    </p:column>
+                    <p:column filterBy="#{item.nom}">
+                        <f:facet name="header">
+                            <h:outputText value="Nom"/>
+                        </f:facet>
+                        <h:outputText value="#{item.nom}"/>
+                    </p:column>
+                    <p:column filterBy="#{item.prenom}">
+                        <f:facet name="header">
+                            <h:outputText value="Prenom"/>
+                        </f:facet>
+                        <h:outputText value="#{item.prenom}"/>
+                    </p:column>
+                    <p:column filterBy="#{item.ville}">
+                        <f:facet name="header">
+                            <h:outputText value="Ville"/>
+                        </f:facet>
+                        <h:outputText value="#{item.ville}"/>
+                    </p:column>
+                     <p:column filterBy="#{item.email}">
+                        <f:facet name="header">
+                            <h:outputText value="email"/>
+                        </f:facet>
+                        <h:outputText value="#{item.email}"/>
+                    </p:column>
+                     <p:column filterBy="#{item.telephone}">
+                        <f:facet name="header">
+                            <h:outputText value="Telephone"/>
+                        </f:facet>
+                        <h:outputText value="#{item.telephone}"/>
+                    </p:column>
+
+                     <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Modifier"/>
+                        </f:facet>
+                         <h:commandButton action="#{ClientBean.update(client)}" value="Modifier"/>     
+                    </p:column>
+                     <p:column>
+                        <f:facet name="header">
+                            <h:outputText  value="Supprimer"/>
+                        </f:facet>
+                         <h:commandButton  actionListener="#{ClientBean.onDelete(item.client)}" value="Supprimer"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </f:view>
+
+
+    
+</ui:define>
+</ui:composition>
+</h:body>
+</html>

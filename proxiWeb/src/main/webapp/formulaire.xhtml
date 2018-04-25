@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<h:outputStylesheet library="css" name="pf.css"/>
+
+
+<title>Formulaire de création du client</title>
+</h:head>
+<h:body>
+
+	<!-- DECLARATION DU TEMPLATE DONT LA PAGE EST CLIENTE -->
+	<ui:composition template="/template/layout.xhtml">
+<!-- Redefinition de la zone 'content' du layout  	-->
+	<ui:define name="header" >
+	<h:form >  
+    <p:growl id="messages"/>
+ <style type="text/css">
+	.ui-menubar	{  background: #000;}
+</style>
+    <p:menubar  >
+        <p:menuitem icon="ui-icon-document" style="background-color:black ;">
+           
+        </p:menuitem>
+ 
+        <p:menuitem value="Acceuil" icon="ui-icon-home" style="background-color:black ; color:white;">
+           
+        </p:menuitem>
+ 
+      
+ 
+    
+ 
+        <p:menuitem value="Quitter" url="#" icon="ui-icon-close" style="background-color:red ;  color:white; position: absolute; right: 6px;" />
+ 
+
+    </p:menubar>
+</h:form>
+</ui:define>
+<ui:define name="content">
+<h:form>
+            
+                <p:panelGrid columns="3"  layout="grid">
+                
+                    <p:outputLabel value="Nom"/>
+                    <p:inputText value="#{clientBean.client.nom}" required="true" id="nom"/>
+                    <p:message for="nom"/>
+                    <p:outputLabel value="Prénom"/>
+                    <p:inputText value="#{clientBean.client.prenom}" required="true" id="prenom"/>
+                    <p:message for="prenom"/>
+                    <p:outputLabel value="Ville"/>
+                    <p:inputText value="#{clientBean.client.ville}" required="true" id="ville"/>
+                    <p:message for="ville"/>
+                    <p:outputLabel value="identifiantClient"/>
+                    <p:inputText value="#{clientBean.client.idClient}" required="true" id="idclient"/>
+                    <p:message for="idclient"/>
+                    <p:outputLabel value="email"/>
+                    <p:inputText value="#{clientBean.client.email}" required="true" id="email"/>
+                    <p:message for="email"/>
+                    <p:outputLabel value="telephone"/>
+                    <p:inputText value="#{clientBean.client.telephone}" required="true" id="tel"/>
+                    <p:message for="tel"></p:message>
+                    
+                    
+<p:commandButton value="Inscription" action="#{clientBean.cClient}"/>
+                </p:panelGrid>
+<!--         <h:commandButton  value="Inscription" action="#{clientBean.cClient}"/> -->
+            	
+        </h:form>
+
+    
+</ui:define>
+
+</ui:composition>
+</h:body>
+</html>
