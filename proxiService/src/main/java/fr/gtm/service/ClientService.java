@@ -2,15 +2,10 @@ package fr.gtm.service;
 
 import java.util.List;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.Path;
-import javax.ws.rs.core.MediaType;
-
 import fr.gtm.dao.ClientDao;
 import fr.gtm.domaine.Client;
 import fr.gtm.domaine.Compte;
-import fr.gtm.domaine.IdClient;
-import fr.gtm.domaine.IdConseiller;
+import fr.gtm.domaine.Conseiller;
 
 /**
  * Classe permettant de realiser les differents services sur le client :
@@ -23,7 +18,6 @@ import fr.gtm.domaine.IdConseiller;
  *
  */
 
-@Path("/clientService")
 public class ClientService {
 
 	// Instanciation du service DAO pour le client
@@ -35,13 +29,11 @@ public class ClientService {
 	 * client correspondant a l'idClient et pouvoir le retourner sous forme de flux
 	 * Json
 	 * 
-	 * @param inpout
+	 * @param client
 	 * @return
 	 */
-	@Path("/getClient")
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Client getClient(IdClient inpout) {
-		int idClient = inpout.getIdClient();
+	public Client getClient(Client client) {
+		int idClient = client.getIdClient();
 		Client monClient = daoClient.getClient(idClient);
 		return monClient;
 	}
@@ -53,13 +45,11 @@ public class ClientService {
 	 * clients du conseiller possedant l'Id envoye. Elle renvoie ensuite la liste de
 	 * client sous forme de flux Json.
 	 * 
-	 * @param input
+	 * @param conseiller
 	 * @return
 	 */
-	@Path("/getAllClientConseiller")
-	@Consumes(MediaType.APPLICATION_JSON)
-	public List<Client> getAllClientConseiller(IdConseiller input) {
-		int idConseiller = input.getIdConseiller();
+	public List<Client> getAllClientConseiller(Conseiller conseiller) {
+		int idConseiller = conseiller.getIdConseiller();
 		List<Client> listeClient = daoClient.getAllClientConseiller(idConseiller);
 		return listeClient;
 	}
@@ -73,8 +63,6 @@ public class ClientService {
 	 * @param client
 	 * @return
 	 */
-	@Path("/updateClient")
-	@Consumes(MediaType.APPLICATION_JSON)
 	public Client updateClient(Client client) {
 		Client monClient = daoClient.updateClient(client);
 		return monClient;

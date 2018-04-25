@@ -2,10 +2,10 @@ package fr.gtm.domaine;
 
 public class Compte {
 	private int idCompte;
-	private int numCompte;
-	private int solde;
+	private int numeroCompte;
+	private double solde;
 	private int idClient;
-	String typeCompte;
+	private String typeCompte;
 
 	/**
 	 * Constructeur
@@ -16,10 +16,10 @@ public class Compte {
 	 * @param idClient
 	 * @param typeCompte
 	 */
-	public Compte(int idCompte, int numCompte, int solde, int idClient, String typeCompte) {
+	public Compte(int idCompte, int numeroCompte, double solde, int idClient, String typeCompte) {
 		super();
 		this.idCompte = idCompte;
-		this.numCompte = numCompte;
+		this.numeroCompte = numeroCompte;
 		this.solde = solde;
 		this.idClient = idClient;
 		this.typeCompte = typeCompte;
@@ -40,19 +40,19 @@ public class Compte {
 		this.idCompte = idCompte;
 	}
 
-	public int getNumCompte() {
-		return numCompte;
+	public int getNumeroCompte() {
+		return numeroCompte;
 	}
 
-	public void setNumCompte(int numCompte) {
-		this.numCompte = numCompte;
+	public void setNumeroCompte(int numCompte) {
+		this.numeroCompte = numCompte;
 	}
 
-	public int getSolde() {
+	public double getSolde() {
 		return solde;
 	}
 
-	public void setSolde(int solde) {
+	public void setSolde(double solde) {
 		this.solde = solde;
 	}
 

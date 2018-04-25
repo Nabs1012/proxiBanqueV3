@@ -25,7 +25,7 @@ public class LoginDao {
 	 * @param login
 	 * @return
 	 */
-	public Login VerificationLogin(Login login) {
+	public Login verificationLogin(Login login) {
 		try {
 			// Preparation du string pour la prepared statement
 			String s = "Select * from conseiller inner Join Login on conseiller.idConseiller = login.idConseiller where login = ? && motDePasse = ?";
@@ -34,7 +34,7 @@ public class LoginDao {
 			pstmt.setString(1, login.getLogin());
 			pstmt.setString(2, login.getMotDePasse());
 			// Execution de la prepared statement
-			ResultSet rs = pstmt.executeQuery(s);
+			ResultSet rs = pstmt.executeQuery();
 			// Attribution des valeurs a un nouveau login a renvoyer
 			Login monLogin = new Login();
 			rs.next();

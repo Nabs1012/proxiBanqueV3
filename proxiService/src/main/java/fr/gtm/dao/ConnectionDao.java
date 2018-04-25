@@ -19,9 +19,9 @@ public class ConnectionDao {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			//TODO modifier le login et mdp de connection a la base de donnee
-			String url = "jdbc:mysql://localhost:3306/bdd";
-			String login = "root";
-			String mdp = "";
+			String url = "jdbc:mysql://localhost:3306/proxibanquesi";
+			String login = "benoit";
+			String mdp = "benoit";
 			Connection connection = DriverManager.getConnection(url, login, mdp);
 			return connection;
 		} catch (ClassNotFoundException e) {
