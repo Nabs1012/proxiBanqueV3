@@ -16,9 +16,8 @@ public class Compte {
 	 * @param idClient
 	 * @param typeCompte
 	 */
-	public Compte(int idCompte, int numeroCompte, double solde, int idClient, String typeCompte) {
+	public Compte(int numeroCompte, double solde, int idClient, String typeCompte) {
 		super();
-		this.idCompte = idCompte;
 		this.numeroCompte = numeroCompte;
 		this.solde = solde;
 		this.idClient = idClient;

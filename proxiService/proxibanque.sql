@@ -79,11 +79,11 @@ INSERT INTO `client` (`idClient`, `nom`, `prenom`, `rue`, `codePostal`, `ville`,
 --
 
 INSERT INTO `compte` (`idCompte`, `numeroCompte`, `solde`, `typeCompte`, `idClient`) VALUES
-(1, 010025, '-800.00', 'courant', 1),
-(2, 010036, '1000.00', 'courant', 2),
-(3, 010033, '5600.00', 'courant', 3),
-(4, 020038, '69000.00', 'epargne', 1),
-(5, 020069, '600.00', 'epargne', 3);
+(1, 10025, '-800.00', 'courant', 1),
+(2, 10036, '1000.00', 'courant', 2),
+(3, 10033, '5600.00', 'courant', 3),
+(4, 20038, '69000.00', 'epargne', 1),
+(5, 20069, '600.00', 'epargne', 3);
 
 --
 -- Contenu de la table `conseiller`

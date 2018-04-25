@@ -12,9 +12,8 @@ public class Conseiller {
 	 * @param nom
 	 * @param prenom
 	 */
-	public Conseiller(int idConseiller, String nom, String prenom) {
+	public Conseiller(String nom, String prenom) {
 		super();
-		this.idConseiller = idConseiller;
 		this.nom = nom;
 		this.prenom = prenom;
 	}

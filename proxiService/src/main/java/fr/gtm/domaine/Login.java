@@ -14,9 +14,8 @@ public class Login {
 	 * @param motDePasse
 	 * @param idConseiller
 	 */
-	public Login(int idLogin, String login, String motDePasse, int idConseiller) {
+	public Login(String login, String motDePasse, int idConseiller) {
 		super();
-		this.idLogin = idLogin;
 		this.login = login;
 		this.motDePasse = motDePasse;
 		this.idConseiller = idConseiller;

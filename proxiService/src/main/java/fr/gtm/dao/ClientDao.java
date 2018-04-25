@@ -114,9 +114,9 @@ public class ClientDao {
 			// Attribution des valeurs a un nouveau client a renvoyer
 			rs.next();
 			monClient.setIdClient(rs.getInt("idClient"));
-			monClient.setRue(rs.getString("rue"));
 			monClient.setNom(rs.getString("nom"));
 			monClient.setPrenom(rs.getString("prenom"));
+			monClient.setRue(rs.getString("rue"));
 			monClient.setCodePostal(rs.getString("codePostal"));
 			monClient.setVille(rs.getString("ville"));
 			monClient.setTelephone(rs.getString("telephone"));
@@ -140,7 +140,7 @@ public class ClientDao {
 	public Client updateClient(Client client) {
 		try {
 			// Preparation du string pour la prepared statement
-			String s = "UPDATE client set nom = ?, prenom = ?, adresse = ?, codePostal = ?, ville = ?, email = ?, telephone = ?, idConseiller = ? where idClient = ?";
+			String s = "UPDATE client set nom = ?, prenom = ?, rue = ?, codePostal = ?, ville = ?, email = ?, telephone = ? where idClient = ?";
 			PreparedStatement pstmt = ConnectionDao.connexion().prepareStatement(s);
 			// Implementation des valeurs dans la prepared statement
 			pstmt.setString(1, client.getNom());
@@ -150,7 +150,7 @@ public class ClientDao {
 			pstmt.setString(5, client.getVille());
 			pstmt.setString(6, client.getEmail());
 			pstmt.setString(7, client.getTelephone());
-			pstmt.setInt(8, client.getIdConseiller());
+			pstmt.setInt(8, client.getIdClient());
 			// Execution de la prepared statement
 			pstmt.executeUpdate();
 

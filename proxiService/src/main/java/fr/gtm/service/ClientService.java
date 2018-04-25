@@ -10,9 +10,7 @@ import fr.gtm.domaine.Conseiller;
 /**
  * Classe permettant de realiser les differents services sur le client :
  * recuperation d'un client, modification d'un client et recuperation d'un
- * compte d'un client. Pour cela les methodes recuperent un flux Json contenant
- * les donnes ainsi que la methode a utiliser, puis renvoie un flux Json
- * contenant la reponse a la requete.
+ * compte d'un client.
  * 
  * @author Stagiaire
  *
@@ -24,10 +22,9 @@ public class ClientService {
 	ClientDao daoClient = new ClientDao();
 
 	/**
-	 * Methode recevant un flux Json contetant un IdClient et retournant un client.
-	 * Pour cela, elle appelle la methode getClient de la DAO pour recuperer le
-	 * client correspondant a l'idClient et pouvoir le retourner sous forme de flux
-	 * Json
+	 * Methode recevant un IdClient et retournant un client. Pour cela, elle appelle
+	 * la methode getClient de la DAO pour recuperer le client correspondant a
+	 * l'idClient et pouvoir le retourner.
 	 * 
 	 * @param client
 	 * @return
@@ -39,11 +36,10 @@ public class ClientService {
 	}
 
 	/**
-	 * Methode recevant un flux Json contenant un IdConseiller et retournant la
-	 * liste de client du conseiller correspondant a cet ID. Pour cela, elle appelle
-	 * la methode getAllClientConseiller de la DAO pour recuperer la liste des
-	 * clients du conseiller possedant l'Id envoye. Elle renvoie ensuite la liste de
-	 * client sous forme de flux Json.
+	 * Methode recevant un IdConseiller et retournant la liste de client du
+	 * conseiller correspondant a cet ID. Pour cela, elle appelle la methode
+	 * getAllClientConseiller de la DAO pour recuperer la liste des clients du
+	 * conseiller possedant l'Id envoye. Elle renvoie ensuite la liste de client.
 	 * 
 	 * @param conseiller
 	 * @return

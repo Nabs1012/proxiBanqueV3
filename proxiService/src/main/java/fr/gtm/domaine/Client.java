@@ -27,9 +27,8 @@ public class Client {
 	 * @param telephone
 	 * @param idConseiller
 	 */
-	public Client(int idClient, String nom, String prenom, String rue, String codePostal, String ville, String email, String telephone, int idConseiller) {
+	public Client(String nom, String prenom, String rue, String codePostal, String ville, String email, String telephone, int idConseiller) {
 		super();
-		this.idClient = idClient;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.rue = rue;
@@ -45,6 +44,11 @@ public class Client {
 	 */
 	public Client() {
 		super();
+	}
+
+	@Override
+	public String toString() {
+		return "Client [nom=" + nom + ", prenom=" + prenom + ", rue=" + rue + ", codePostal=" + codePostal + ", ville=" + ville + ", email=" + email + ", telephone=" + telephone + "]";
 	}
 
 	public int getIdClient() {
