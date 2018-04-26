@@ -9,7 +9,6 @@ public class Login {
 	/**
 	 * Constructeur
 	 * 
-	 * @param idLogin
 	 * @param login
 	 * @param motDePasse
 	 * @param idConseiller

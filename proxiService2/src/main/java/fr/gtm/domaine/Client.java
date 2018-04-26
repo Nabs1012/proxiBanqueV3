@@ -17,7 +17,6 @@ public class Client {
 	/**
 	 * Constructeur
 	 * 
-	 * @param idClient
 	 * @param nom
 	 * @param prenom
 	 * @param rue

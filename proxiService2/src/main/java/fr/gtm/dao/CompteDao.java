@@ -23,7 +23,7 @@ public class CompteDao {
 	 * entree un compte et l'insere en BDD. Si tout se passe bien elle renvoie true
 	 * sinon elle renvoie False.
 	 * 
-	 * @param client
+	 * @param compte
 	 * @return
 	 */
 	public boolean createCompte(Compte compte) {
@@ -54,7 +54,7 @@ public class CompteDao {
 	 * supprime le compte. Si l'operation se passe correctement la methode renvoie
 	 * true sinon elle renvoie false.
 	 * 
-	 * @param client
+	 * @param compte
 	 * @return
 	 */
 	public boolean deleteCompte(Compte compte) {
@@ -173,8 +173,7 @@ public class CompteDao {
 	 * correspondant a la requete puis on implemente les informations recuperees
 	 * dans un nouvel objet Compte qui est renvoye.
 	 * 
-	 * @param idClient
-	 * @param typeCompte
+	 * @param numeroCompte
 	 * @return
 	 */
 	public Compte getCompte(int numeroCompte) {

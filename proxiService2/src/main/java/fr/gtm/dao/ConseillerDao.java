@@ -45,7 +45,7 @@ public class ConseillerDao {
 	
 	/**
 	 * Methode permettant de supprimer un conseiller en BDD.
-	 * @param client
+	 * @param conseiller
 	 * @return
 	 */
 	public boolean deleteConseiller(Conseiller conseiller) {
@@ -71,7 +71,7 @@ public class ConseillerDao {
 	
 	/**
 	 * Methode permettant de modifier un conseiller.
-	 * @param client
+	 * @param conseiller
 	 * @return
 	 */
 	public Conseiller updateClient(Conseiller conseiller) {

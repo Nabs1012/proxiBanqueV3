@@ -10,8 +10,7 @@ public class Compte {
 	/**
 	 * Constructeur
 	 * 
-	 * @param idCompte
-	 * @param numCompte
+	 * @param numeroCompte
 	 * @param solde
 	 * @param idClient
 	 * @param typeCompte

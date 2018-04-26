@@ -52,7 +52,7 @@ public class ClientService {
 	 * la DAO pour recuperer le compte correspondant au numero de compte et pouvoir
 	 * le retourner sous forme de flux Json
 	 * 
-	 * @param client
+	 * @param JsonCompte
 	 * @return
 	 * @throws IOException
 	 */

@@ -28,7 +28,7 @@ public class ClientDao {
 	 * sinon elle renvoie False.
 	 * 
 	 * @param client
-	 * @return
+	 * @return boolean
 	 */
 	public boolean createClient(Client client) {
 		int i = 0;

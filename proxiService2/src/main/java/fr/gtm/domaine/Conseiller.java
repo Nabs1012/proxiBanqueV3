@@ -8,7 +8,6 @@ public class Conseiller {
 	/**
 	 * Constructeur
 	 * 
-	 * @param idConseiller
 	 * @param nom
 	 * @param prenom
 	 */
