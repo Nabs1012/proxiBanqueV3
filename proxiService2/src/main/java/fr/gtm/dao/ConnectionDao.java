@@ -20,8 +20,8 @@ public class ConnectionDao {
 			Class.forName("com.mysql.jdbc.Driver");
 			//TODO modifier le login et mdp de connection a la base de donnee
 			String url = "jdbc:mysql://localhost:3306/proxibanquesi";
-			String login = "benoit";
-			String mdp = "benoit";
+			String login = "proxi";
+			String mdp = "proxi";
 			Connection connection = DriverManager.getConnection(url, login, mdp);
 			return connection;
 		} catch (ClassNotFoundException e) {
