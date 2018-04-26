@@ -77,11 +77,12 @@ public class ConseillerDao {
 	public Conseiller updateClient(Conseiller conseiller) {
 		try {
 			// Preparation du string pour la prepared statement
-			String s = "UPDATE client set nom = ?, prenom = ?";
+			String s = "UPDATE conseiller set nom = ?, prenom = ? where idConseiller = ?";
 			PreparedStatement pstmt = ConnectionDao.connexion().prepareStatement(s);
 			// Implementation des valeurs dans la prepared statement
 			pstmt.setString(1, conseiller.getNom());
 			pstmt.setString(2, conseiller.getPrenom());
+			pstmt.setInt(3, conseiller.getIdConseiller());
 			// Execution de la prepared statement
 			pstmt.executeUpdate();
 
@@ -95,7 +96,7 @@ public class ConseillerDao {
 
 			// Attribution des valeurs a un nouveau client a renvoyer
 			rs.first();
-			monConseiller.setIdConseiller(rs.getInt("idClient"));
+			monConseiller.setIdConseiller(rs.getInt("idConseiller"));
 			monConseiller.setNom(rs.getString("nom"));
 			monConseiller.setPrenom(rs.getString("prenom"));
 			return monConseiller;

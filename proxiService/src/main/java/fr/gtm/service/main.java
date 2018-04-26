@@ -16,6 +16,9 @@ public class main {
 		client.setPrenom("Bliblou");
 		Client monClient2 = serviceClient.updateClient(client);
 		System.out.println(monClient2);
+		
+		
+		
 	}
 
 }

@@ -3,13 +3,21 @@
 --
 CREATE DATABASE IF NOT EXISTS `proxibanqueSI` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `proxibanqueSI`;
+
 -- --------------------------------------------------------
+--
+-- Drop table IF exists
+--
+
+DROP TABLE IF EXISTS `login`;
+DROP TABLE IF EXISTS `compte`;
+DROP TABLE IF EXISTS `client`;
+DROP TABLE IF EXISTS `conseiller`;
 
 --
 -- Création de la table `client`
 --
 
-DROP TABLE IF EXISTS `client`;
 CREATE TABLE `client` (
   `idClient` integer primary key auto_increment,
   `nom` varchar(255) NOT NULL,
@@ -26,7 +34,6 @@ CREATE TABLE `client` (
 -- Création de la table `compte`
 --
 
-DROP TABLE IF EXISTS `compte`;
 CREATE TABLE `compte` (
   `idCompte` integer primary key auto_increment,
   `numeroCompte` int(100) NOT NULL,
@@ -39,7 +46,6 @@ CREATE TABLE `compte` (
 -- Création de la table `conseiller`
 --
 
-DROP TABLE IF EXISTS `conseiller`;
 CREATE TABLE `conseiller` (
   `idConseiller` integer primary key auto_increment,
   `nom` varchar(255) NOT NULL,
@@ -50,7 +56,6 @@ CREATE TABLE `conseiller` (
 -- Création de la table `login`
 --
 
-DROP TABLE IF EXISTS `login`;
 CREATE TABLE `login` (
   `idLogin` integer primary key auto_increment,
   `login` varchar(255) DEFAULT NULL,

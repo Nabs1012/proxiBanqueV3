@@ -31,7 +31,7 @@ public class CompteDao {
 		boolean b = false;
 		try {
 			// Preparation du string pour la prepared statement
-			String s = "INSERT INTO `client`(`numeroCompte`, `solde`, `typeCompte`, `idClient`) VALUES (?, ?, ?, ?)";
+			String s = "INSERT INTO compte (`numeroCompte`, `solde`, `typeCompte`, `idClient`) VALUES (?, ?, ?, ?)";
 			PreparedStatement pstmt = ConnectionDao.connexion().prepareStatement(s);
 			// Implementation des valeurs dans la prepared statement
 			pstmt.setInt(1, compte.getNumeroCompte());
@@ -93,26 +93,27 @@ public class CompteDao {
 			String s = "UPDATE compte set solde = ? where idCompte = ?";
 			PreparedStatement pstmt = ConnectionDao.connexion().prepareStatement(s);
 			// Implementation des valeurs dans la prepared statement
-			pstmt.setInt(1, compte.getIdCompte());
+			pstmt.setDouble(1, compte.getSolde());
+			pstmt.setInt(2, compte.getIdCompte());
 			// Execution de la prepared statement
 			pstmt.executeUpdate();
 
 			// Preparation d'un deuxieme string pour la seconde prepared statement
-			String s2 = "Select * from compte where idClient = ?";
+			String s2 = "Select * from compte where idCompte = ?";
 			PreparedStatement pstmt2 = ConnectionDao.connexion().prepareStatement(s2);
 			// Implementation des valeurs dans la prepared statement
-			pstmt.setInt(1, compte.getIdCompte());
+			pstmt2.setInt(1, compte.getIdCompte());
 			// Execution de la prepared statement
 			ResultSet rs = pstmt2.executeQuery();
 
 			// Attribution des valeurs a un nouveau client a renvoyer
 			Compte monCompte = new Compte();
 			rs.first();
-			monCompte.setIdClient(rs.getInt("idClient"));
 			monCompte.setIdCompte(rs.getInt("idCompte"));
 			monCompte.setNumeroCompte(rs.getInt("numeroCompte"));
 			monCompte.setSolde(rs.getDouble("solde"));
 			monCompte.setTypeCompte(rs.getString("typeCompte"));
+			monCompte.setIdClient(rs.getInt("idClient"));
 			return monCompte;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -135,15 +136,16 @@ public class CompteDao {
 			String s = "UPDATE compte set solde = ?, numeroCompte = ?, typeCompte = ?, idClient = ? where idCompte = ?";
 			PreparedStatement pstmt = ConnectionDao.connexion().prepareStatement(s);
 			// Implementation des valeurs dans la prepared statement
-			pstmt.setInt(1, compte.getIdCompte());
+			pstmt.setDouble(1, compte.getSolde());
 			pstmt.setInt(2, compte.getNumeroCompte());
 			pstmt.setString(3, compte.getTypeCompte());
 			pstmt.setInt(4, compte.getIdClient());
+			pstmt.setInt(5, compte.getIdCompte());
 			// Execution de la prepared statement
 			pstmt.executeUpdate();
 
 			// Preparation d'un deuxieme string pour la seconde prepared statement
-			String s2 = "Select * from compte where idClient = ?";
+			String s2 = "Select * from compte where idCompte = ?";
 			PreparedStatement pstmt2 = ConnectionDao.connexion().prepareStatement(s2);
 			// Implementation des valeurs dans la prepared statement
 			pstmt.setInt(1, compte.getIdCompte());
@@ -166,23 +168,22 @@ public class CompteDao {
 	}
 
 	/**
-	 * Methode qui renvoie le compte d'un client grace a son Id et au type de compte
-	 * desire. Pour cela, on recupere le compte possedant l'Id client et le type de
-	 * compte dans la BDD correspondant a la requete puis on implemente les
-	 * informations recuperees dans un nouvel objet Compte qui est renvoye.
+	 * Methode qui renvoie le compte d'un client grace a son numero de compte. Pour
+	 * cela, on recupere le compte possedant le meme numero de compte dans la BDD
+	 * correspondant a la requete puis on implemente les informations recuperees
+	 * dans un nouvel objet Compte qui est renvoye.
 	 * 
 	 * @param idClient
 	 * @param typeCompte
 	 * @return
 	 */
-	public Compte getCompte(int idClient, String typeCompte) {
+	public Compte getCompte(int numeroCompte) {
 		try {
 			// Preparation du string pour la prepared statement
-			String s = "Select * from compte where idClient = ? && typeCompte = ?";
+			String s = "Select * from compte where numeroCompte = ?";
 			PreparedStatement pstmt = ConnectionDao.connexion().prepareStatement(s);
 			// Implementation des valeurs dans la prepared statement
-			pstmt.setInt(1, idClient);
-			pstmt.setString(2, typeCompte);
+			pstmt.setInt(1, numeroCompte);
 			// Execution de la prepared statement
 			ResultSet rs = pstmt.executeQuery();
 

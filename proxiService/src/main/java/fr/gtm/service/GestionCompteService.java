@@ -46,9 +46,8 @@ public class GestionCompteService {
 	 * @return
 	 */
 	public Compte credit(Compte compte, double montant) {
-		Compte monCompte = daoCompte.getCompte(compte.getIdClient(), compte.getTypeCompte());
-		monCompte.setSolde(monCompte.getSolde() + montant);
-		return monCompte = daoCompte.updateSoldeCompte(monCompte);
+		compte.setSolde(compte.getSolde() + montant);
+		return compte = daoCompte.updateSoldeCompte(compte);
 	}
 
 	/**
@@ -62,9 +61,8 @@ public class GestionCompteService {
 	 * @return
 	 */
 	public Compte debit(Compte compte, double montant) {
-		Compte monCompte = daoCompte.getCompte(compte.getIdClient(), compte.getTypeCompte());
-		monCompte.setSolde(monCompte.getSolde() - montant);
-		return monCompte = daoCompte.updateSoldeCompte(monCompte);
+		compte.setSolde(compte.getSolde() - montant);
+		return compte = daoCompte.updateSoldeCompte(compte);
 	}
 
 	/**

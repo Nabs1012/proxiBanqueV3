@@ -3,6 +3,7 @@ package fr.gtm.service;
 import java.util.List;
 
 import fr.gtm.dao.ClientDao;
+import fr.gtm.dao.CompteDao;
 import fr.gtm.domaine.Client;
 import fr.gtm.domaine.Compte;
 import fr.gtm.domaine.Conseiller;
@@ -64,10 +65,10 @@ public class ClientService {
 		return monClient;
 	}
 
-	// TODO faire méthode getCompte
-	public Compte getCompte(Client client, String typeCompte) {
-		Compte compte = new Compte();
-		return compte;
+	public Compte getCompte(Compte compte) {
+		CompteDao daoCompte = new CompteDao();
+		Compte monCompte = daoCompte.getCompte(compte.getNumeroCompte());
+		return monCompte;
 	}
 
 }
