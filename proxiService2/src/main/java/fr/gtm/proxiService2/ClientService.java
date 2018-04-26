@@ -1,5 +1,7 @@
 package fr.gtm.proxiService2;
 
+import java.io.IOException;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -8,9 +10,12 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import fr.gtm.dao.ClientDao;
+import fr.gtm.dao.CompteDao;
 import fr.gtm.domaine.Client;
-import fr.gtm.domaine.IdClient;
+import fr.gtm.domaine.Compte;
 
 /**
  * Classe permettant de realiser les differents services sur le client :
@@ -23,13 +28,15 @@ import fr.gtm.domaine.IdClient;
  * @author Stagiaire
  *
  */
-@Path("clientservice")
+@Path("clientService")
 public class ClientService {
 
 	ClientDao daoClient = new ClientDao();
-	
+
 	/**
-	 * Methode de test get pour tester la connectivite entre la WebService et un client 
+	 * Methode de test get pour tester la connectivite entre la WebService et un
+	 * client
+	 * 
 	 * @return
 	 */
 	@GET
@@ -38,22 +45,26 @@ public class ClientService {
 		Client client = new Client("Monsieur", "Test", "", "", "", "", "", 2);
 		return "get it in ClientService..." + client;
 	}
-	
+
 	/**
-	 * Methode recevant un flux Json contetant un IdClient et retournant un client.
-	 * Pour cela, elle appelle la methode getClient de la DAO pour recuperer le
-	 * client correspondant a l'idClient et pouvoir le retourner sous forme de flux
-	 * Json
+	 * Methode recevant un flux Json contetant un Compte partiel (numeroCompte) et
+	 * retournant un Compte complet. Pour cela, elle appelle la methode getCompte de
+	 * la DAO pour recuperer le compte correspondant au numero de compte et pouvoir
+	 * le retourner sous forme de flux Json
 	 * 
 	 * @param client
 	 * @return
+	 * @throws IOException
 	 */
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response getClient(IdClient id) {
-		int idClient = id.getIdClient();
-		Client monClient = daoClient.getClient(idClient);
-		return Response.status(201).entity(monClient).build();
+	public Response getCompte(String JsonCompte) throws IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		Compte compte = mapper.readValue(JsonCompte, Compte.class);
+		CompteDao daoCompte = new CompteDao();
+		Compte monCompte = daoCompte.getCompte(compte.getNumeroCompte());
+		String output = mapper.writeValueAsString(monCompte);
+		return Response.status(201).entity(output).build();
 	}
-	
+
 }
