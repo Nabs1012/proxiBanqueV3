@@ -22,6 +22,12 @@ public Conseiller(int idConseiller, String nom, String prenom) {
 public Conseiller() {
 	super();
 }
+
+public Conseiller(String nom, String prenom) {
+	super();
+	this.nom = nom;
+	this.prenom = prenom;
+}
 public int getIdConseiller() {
 	return idConseiller;
 }
