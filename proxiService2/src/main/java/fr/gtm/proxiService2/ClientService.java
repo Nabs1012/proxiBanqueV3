@@ -67,4 +67,28 @@ public class ClientService {
 		return Response.status(201).entity(output).build();
 	}
 
+//	/**
+//	 * Methoderecevant un flux Json contetant un Conseiller et retournant la liste
+//	 * des clients associés. Pour cela, elle appelle la methode
+//	 * getAllClientConseiller de la DAO pour recuperer les clients correspondant au
+//	 * conseiller (idConseiller) et pouvoir retourner la liste sous forme de flux
+//	 * Json
+//	 * 
+//	 * @param JsonConseiller
+//	 * @return
+//	 * @throws JsonParseException
+//	 * @throws JsonMappingException
+//	 * @throws IOException
+//	 */
+//	@POST
+//	@Consumes(MediaType.APPLICATION_JSON)
+//	public Response getAllClientConseiller(String JsonConseiller) throws JsonParseException, JsonMappingException, IOException {
+//		ObjectMapper mapper = new ObjectMapper();
+//		Conseiller conseiller = mapper.readValue(JsonConseiller, Conseiller.class);
+//		int idConseiller = conseiller.getIdConseiller();
+//		List<Client> listeClient = daoClient.getAllClientConseiller(idConseiller);
+//		String output = mapper.writeValueAsString(listeClient);
+//		return Response.status(201).entity(output).build();
+//	}
+
 }
