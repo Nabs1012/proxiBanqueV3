@@ -25,6 +25,13 @@ public Login(int idLogin, String login, String motDePasse, int idConseiller) {
 public Login() {
 	super();
 }
+
+public Login(String login, String motDePasse, int idConseiller) {
+	super();
+	this.login = login;
+	this.motDePasse = motDePasse;
+	this.idConseiller = idConseiller;
+}
 public int getIdLogin() {
 	return idLogin;
 }

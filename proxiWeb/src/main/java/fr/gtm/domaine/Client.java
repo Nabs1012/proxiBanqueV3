@@ -42,6 +42,21 @@ public Client(int idClient, String nom, String prenom, String rue, String codePo
 	this.idConseiller = idConseiller;
 }
 
+
+public Client(String nom, String prenom, String rue, String codePostal, String ville, String email, String telephone,
+		int idConseiller) {
+	super();
+	this.nom = nom;
+	this.prenom = prenom;
+	this.rue = rue;
+	this.codePostal = codePostal;
+	this.ville = ville;
+	this.email = email;
+	this.telephone = telephone;
+	this.idConseiller = idConseiller;
+}
+
+
 public int getIdClient() {
 	return idClient;
 }

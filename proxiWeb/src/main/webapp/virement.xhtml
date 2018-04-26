@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<h:outputStylesheet library="css" name="pf.css"/>
+
+
+<title>page d'entrée</title>
+</h:head>
+
+<body>
+
+	<!-- DECLARATION DU TEMPLATE DONT LA PAGE EST CLIENTE -->
+	<ui:composition template="/template/layout.xhtml">
+
+	<!-- Redefinition de la zone 'content' du layout  	-->
+	<ui:define name="header" >
+	<h:form >  
+    <p:growl id="messages"/>
+ <style type="text/css">
+	.ui-menubar	{  background: #000;}
+</style>
+    <p:menubar  >
+        <p:menuitem value="ProxiBanqueSI" style="background-color:black ; color:white;">
+           
+        </p:menuitem>
+ 
+        <p:menuitem value="Acceuil" action="listeClient" icon="ui-icon-home" style="background-color:black ; color:white;">
+           
+        </p:menuitem>
+ 
+      
+ 
+    
+ 
+        <p:menuitem value="Quitter" action="Quitter" icon="ui-icon-close" style="background-color:red ;  color:white; position: absolute; right: 6px;" />
+ 
+
+    </p:menubar>
+</h:form>
+</ui:define>
+
+    <ui:define name="content">
+    <f:view>
+            <h:form>
+                <h1><p:outputLabel value="Liste des Compte"></p:outputLabel></h1>
+                <p:dataTable value="#{clientBean.lcs()}" var="item">
+                    <p:column filterBy="#{item.idClient}">
+                        <f:facet name="header">
+                            <h:outputText value="Identifiant client"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idClient}"/>
+                    </p:column>
+                    <p:column filterBy="#{item.idCompte}">
+                        <f:facet name="header">
+                            <h:outputText value="Identifiant compte"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idCompte}"/>
+                    </p:column>
+                    <p:column filterBy="#{item.numeroCompte}">
+                        <f:facet name="header">
+                            <h:outputText value="numero de compte"/>
+                        </f:facet>
+                        <h:outputText value="#{item.numeroCompte}"/>
+                    </p:column>
+                    <p:column filterBy="#{item.solde}">
+                        <f:facet name="header">
+                            <h:outputText value="solde"/>
+                        </f:facet>
+                        <h:outputText value="#{item.solde}"/>
+                    </p:column>
+                     <p:column filterBy="#{item.typeCompte}">
+                        <f:facet name="header">
+                            <h:outputText value="type"/>
+                        </f:facet>
+                        <h:outputText value="#{item.typeCompte}"/>
+                    </p:column>
+                     
+                </p:dataTable>
+            </h:form>
+        </f:view>
+
+    
+ <h:form>
+            <p:fieldset legend="Virement">
+                <p:panelGrid columns="2" layout="grid">
+                    <p:outputLabel value="Compte créditeur"/>
+                    <p:inputText value="#{clientBean.compteCredit.numeroCompte}" />
+                    <p:outputLabel value="Compte debiteur"/>
+                    <p:inputText value="#{clientBean.compteDebit.numeroCompte}" />
+                     <p:outputLabel value="montant"/>
+                    <p:inputText value="#{clientBeanBean.montant}" />
+                   <p:separator/>
+                    <p:commandButton value="Valider" action="#{clientBean.virement}"/>
+<!--                     <p:commandButton value="Annuler" type="reset"/> -->
+
+                
+                </p:panelGrid>
+            </p:fieldset>
+        </h:form>
+
+    
+ 
+		</ui:define>
+		
+		
+
+	</ui:composition>
+</body>
+</html>

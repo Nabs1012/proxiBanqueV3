@@ -24,7 +24,7 @@
 	.ui-menubar	{  background: #000;}
 </style>
     <p:menubar  >
-        <p:menuitem icon="ui-icon-document" style="background-color:black ;">
+        <p:menuitem value="ProxiBanqueSI" style="background-color:black ; color:white;">
            
         </p:menuitem>
  
@@ -36,7 +36,7 @@
  
     
  
-        <p:menuitem value="Quitter" url="#" icon="ui-icon-close" style="background-color:red ;  color:white; position: absolute; right: 6px;" />
+        <p:menuitem value="Quitter" action="Quitter" icon="ui-icon-close" style="background-color:red ;  color:white; position: absolute; right: 6px;" />
  
 
     </p:menubar>
@@ -45,8 +45,8 @@
 <ui:define name="content">
       <f:view>
             <h:form>
-                <h1><p:outputLabel value="Liste des Clients"></p:outputLabel></h1>
-                <p:dataTable value="#{clientBean.lesClients()}" var="item">
+                <h1><p:outputLabel value="Liste des Clients de #{conseillerBean.consLog.nom} #{conseillerBean.consLog.prenom}" ></p:outputLabel></h1>
+                <p:dataTable value="#{conseillerBean.lesClients()}" var="item">
                     <p:column filterBy="#{item.idClient}">
                         <f:facet name="header">
                             <h:outputText value="Identifiant"/>
@@ -71,6 +71,18 @@
                         </f:facet>
                         <h:outputText value="#{item.ville}"/>
                     </p:column>
+                    <p:column filterBy="#{item.rue}">
+                        <f:facet name="header">
+                            <h:outputText value="Adresse"/>
+                        </f:facet>
+                        <h:outputText value="#{item.rue}"/>
+                    </p:column>
+                    <p:column filterBy="#{item.codePostal}">
+                        <f:facet name="header">
+                            <h:outputText value="Code postal"/>
+                        </f:facet>
+                        <h:outputText value="#{item.codePostal}"/>
+                    </p:column>
                      <p:column filterBy="#{item.email}">
                         <f:facet name="header">
                             <h:outputText value="email"/>
@@ -83,18 +95,25 @@
                         </f:facet>
                         <h:outputText value="#{item.telephone}"/>
                     </p:column>
+                    
 
                      <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Modifier"/>
+                            <h:outputText value="Edition"/>
                         </f:facet>
-                         <h:commandButton action="#{ClientBean.update(client)}" value="Modifier"/>     
+                         <h:commandLink action="modification" value="Modifier"/>     
                     </p:column>
                      <p:column>
                         <f:facet name="header">
-                            <h:outputText  value="Supprimer"/>
+                            <h:outputText  value=" Compte"/>
                         </f:facet>
-                         <h:commandButton  actionListener="#{ClientBean.onDelete(item.client)}" value="Supprimer"/>
+                         <h:commandLink  action="listecompte" value="Liste Compte"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText  value="Transaction"/>
+                        </f:facet>
+                         <h:commandLink  action="virement" value="virement"/>
                     </p:column>
                 </p:dataTable>
             </h:form>

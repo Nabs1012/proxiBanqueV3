@@ -17,18 +17,18 @@
 	<!-- DECLARATION DU TEMPLATE DONT LA PAGE EST CLIENTE -->
 	<ui:composition template="/template/layout.xhtml">
 <!-- Redefinition de la zone 'content' du layout  	-->
-	<ui:define name="header" >
+<ui:define name="header" >
 	<h:form >  
     <p:growl id="messages"/>
  <style type="text/css">
 	.ui-menubar	{  background: #000;}
 </style>
     <p:menubar  >
-        <p:menuitem icon="ui-icon-document" style="background-color:black ;">
+        <p:menuitem value="ProxiBanqueSI" style="background-color:black ; color:white;">
            
         </p:menuitem>
  
-        <p:menuitem value="Acceuil" icon="ui-icon-home" style="background-color:black ; color:white;">
+        <p:menuitem value="Acceuil" action="listeClient" icon="ui-icon-home" style="background-color:black ; color:white;">
            
         </p:menuitem>
  
@@ -36,7 +36,7 @@
  
     
  
-        <p:menuitem value="Quitter" url="#" icon="ui-icon-close" style="background-color:red ;  color:white; position: absolute; right: 6px;" />
+        <p:menuitem value="Quitter" action="Quitter" icon="ui-icon-close" style="background-color:red ;  color:white; position: absolute; right: 6px;" />
  
 
     </p:menubar>
@@ -44,7 +44,7 @@
 </ui:define>
 <ui:define name="content">
 <h:form>
-            
+            <p:fieldset legend="Edition">
                 <p:panelGrid columns="3"  layout="grid">
                 
                     <p:outputLabel value="Nom"/>
@@ -56,9 +56,12 @@
                     <p:outputLabel value="Ville"/>
                     <p:inputText value="#{clientBean.client.ville}" required="true" id="ville"/>
                     <p:message for="ville"/>
-                    <p:outputLabel value="identifiantClient"/>
-                    <p:inputText value="#{clientBean.client.idClient}" required="true" id="idclient"/>
-                    <p:message for="idclient"/>
+                    <p:outputLabel value="Adresse"/>
+                    <p:inputText value="#{clientBean.client.rue}" required="true" id="rue"/>
+                    <p:message for="rue"/>
+                    <p:outputLabel value="Code Postal"/>
+                    <p:inputText value="#{clientBean.client.codePostal}" required="true" id="code"/>
+                    <p:message for="code"/>
                     <p:outputLabel value="email"/>
                     <p:inputText value="#{clientBean.client.email}" required="true" id="email"/>
                     <p:message for="email"/>
@@ -66,10 +69,11 @@
                     <p:inputText value="#{clientBean.client.telephone}" required="true" id="tel"/>
                     <p:message for="tel"></p:message>
                     
-                    
+                    <p:separator/>
 <p:commandButton value="Modification" action="#{clientBean.update}"/>
-                </p:panelGrid>
 
+                </p:panelGrid>
+</p:fieldset>
             	
         </h:form>
 
